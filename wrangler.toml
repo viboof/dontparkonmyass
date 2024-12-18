@@ -11,8 +11,8 @@ compatibility_flags = ["nodejs_compat"]
 enabled = true
 
 [triggers]
-# 22:00 UTC (14:00 PT) every wednesday
-crons = [ "0 22 * * 3" ]
+# 00:00 UTC Thurs (16:00 PT Wed)
+crons = [ "0 0 * * 5" ]
 
 # Automatically place your workloads in an optimal location to minimize latency.
 # If you are running back-end logic in a Worker, running it closer to your back-end infrastructure

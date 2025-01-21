@@ -72,7 +72,7 @@ export default {
 		const discordUrl = env.DISCORD_WEBHOOK_URL;
 
 		if (event.startDate.startsWith(date)) {
-			await this.discord(discordUrl, `**${event.name}** at the Moda Center today (${date})! park with caution <<:ASSGUN:1004546251850788884>`);
+			await this.discord(discordUrl, `**${event.name}** at the Moda Center today (${date})! park with caution <:ASSGUN:1004546251850788884>`);
 		} else {
 			await this.discord(discordUrl, `nothing at the Moda Center today (${date}) <:ASSJKWON:1012402700438208652>`);
 		}

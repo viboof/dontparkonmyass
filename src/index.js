@@ -8,7 +8,9 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-const DATA_HEADER = '<script type="application/ld+json">';
+const PDX_ROLE = "<@&475812819191726111>";
+
+const DATA_HEADER = "<script type=application/ld+json>";
 const DATA_FOOTER = "</script>";
 const MODA = "https://www.modaportland.com/events/";
 
@@ -62,6 +64,8 @@ export default {
 		const res = await fetch(moda);
 		const text = await res.text();
 
+		console.log("text:", text);
+
 		const parts = text.split(DATA_HEADER);
 
 		// part 0 will be the web page before the first script,
@@ -72,7 +76,7 @@ export default {
 		const discordUrl = env.DISCORD_WEBHOOK_URL;
 
 		if (event.startDate.startsWith(date)) {
-			await this.discord(discordUrl, `**${event.name}** at the Moda Center today (${date})! park with caution <:ASSGUN:1004546251850788884>`);
+			await this.discord(discordUrl, `${PDX_ROLE} **${event.name}** at the Moda Center today (${date})! park with caution <:ASSGUN:1004546251850788884>`);
 		} else {
 			await this.discord(discordUrl, `nothing at the Moda Center today (${date}) <:ASSJKWON:1012402700438208652>`);
 		}

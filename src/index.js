@@ -52,6 +52,7 @@ export default {
 		let body = {
 			content: message + " ([source code](https://github.com/viboof/dontparkonmyass))",
 			username: "don't park on my [ass]",
+			avatar_url: "https://viboof.com/adamgun.png",
 		};
 
 		if (image) {
@@ -80,7 +81,7 @@ export default {
 
 		const discordUrl = env.DISCORD_WEBHOOK_URL;
 
-		if (true || event.startDate.startsWith(date)) {
+		if (event.startDate.startsWith(date)) {
 			await this.discord(discordUrl, `# ${PDX_ROLE} **${event.name}** at the Moda Center today <:ASSGUN:1004546251850788884>\n(${date})`, "dontpark.png");
 		} else {
 			await this.discord(discordUrl, `nothing at the Moda Center today (${date}) <:ASSJKWON:1012402700438208652>`);

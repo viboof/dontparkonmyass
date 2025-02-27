@@ -48,15 +48,20 @@ export default {
 		await this.run(getCurrentDateString(), MODA, env);
 	},
 
-	async discord(url, message) {
+	async discord(url, message, image = "") {
+		let body = {
+			content: message + " ([source code](https://github.com/viboof/dontparkonmyass))",
+			username: "don't park on my [ass]",
+		};
+
+		if (image) {
+			body.embeds = [{ image: { url: "https://viboof.com/" + image } }]
+		}
+
 		await fetch(url + "?wait=true", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({
-				content: message + " ([source code](https://github.com/viboof/dontparkonmyass))",
-				username: "don't park on my [ass]",
-				avatar_url: "https://viboof.com/adamgun.png",
-			})
+			body: JSON.stringify(body)
 		})
 	},
 
@@ -76,7 +81,7 @@ export default {
 		const discordUrl = env.DISCORD_WEBHOOK_URL;
 
 		if (event.startDate.startsWith(date)) {
-			await this.discord(discordUrl, `${PDX_ROLE} **${event.name}** at the Moda Center today (${date})! park with caution <:ASSGUN:1004546251850788884>`);
+			await this.discord(discordUrl, `# ${PDX_ROLE} **${event.name}** at the Moda Center today (${date})! <:ASSGUN:1004546251850788884>`, "dontpark.jpg");
 		} else {
 			await this.discord(discordUrl, `nothing at the Moda Center today (${date}) <:ASSJKWON:1012402700438208652>`);
 		}

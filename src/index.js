@@ -55,7 +55,7 @@ export default {
 		};
 
 		if (image) {
-			body.embeds = [{ image: { url: "https://viboof.com/" + image } }]
+			body.embeds = [{ image: { url: "https://viboof.com/" + image }, color: 16711680 }]  //red
 		}
 
 		await fetch(url + "?wait=true", {
@@ -80,8 +80,8 @@ export default {
 
 		const discordUrl = env.DISCORD_WEBHOOK_URL;
 
-		if (event.startDate.startsWith(date)) {
-			await this.discord(discordUrl, `# ${PDX_ROLE} **${event.name}** at the Moda Center today (${date})! <:ASSGUN:1004546251850788884>`, "dontpark.jpg");
+		if (true || event.startDate.startsWith(date)) {
+			await this.discord(discordUrl, `# ${PDX_ROLE} **${event.name}** at the Moda Center today <:ASSGUN:1004546251850788884>\n(${date})`, "dontpark.png");
 		} else {
 			await this.discord(discordUrl, `nothing at the Moda Center today (${date}) <:ASSJKWON:1012402700438208652>`);
 		}

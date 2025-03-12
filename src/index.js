@@ -90,7 +90,7 @@ export default {
 
 			const discordUrl = approved ? env.DISCORD_WEBHOOK_URL : env.APPROVAL_DISCORD_WEBHOOK_URL;
 			const url = env.URL + "?key=" + env.SECRET_KEY + "&date=" + date + "&moda=" + encodeURIComponent(moda);
-			const approvalText = `\n\ndecide: ${url}&ui=1&url=${encodeURIComponent(url)}${BOOF}`;
+			const approvalText = `\n\nmoda: <${moda}>\ndecide: ${url}&ui=1&url=${encodeURIComponent(url)} ${BOOF}`;
 			const suffix = approved ? "" : approvalText;
 
 			if (event.startDate.startsWith(date)) {
